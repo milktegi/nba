@@ -1,7 +1,8 @@
 import React from 'react';
 import SideNav from 'react-simple-sidenav';
+import SideNavItems from './sideNav_items';
 
-const SideNavigation = (props) => {
+const sideNavigation = (props) => {
     return(
       <div>
         {/** 캐치해야 하는 props 
@@ -12,11 +13,16 @@ const SideNavigation = (props) => {
         <SideNav
         showNav={props.showNav}
         onHideNav={props.onHideNav}
+        navStyle={{
+          background: '#242424',
+          maxWidth: '220px'
+        }}
         >
-          Options
+         {/**이 부분에서 sidenav의 option을 렌더링 */}
+         <SideNavItems/>
         </SideNav>
       </div>
     )
 }
 
-export default SideNavigation;
+export default sideNavigation;
