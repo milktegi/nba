@@ -1,7 +1,12 @@
 import React from 'react';
+import NewsSlider from '../widgets/NewsSlider/slider';
 
-const home = () => {
-  return <div>home</div>;
+const Home = () => {
+	return (
+		<div>
+			<NewsSlider />
+		</div>
+	);
 };
 
-export default home;
+export default Home;
