@@ -16,3 +16,23 @@
 	text-decoration: none;
 	
 }
+
+.newsList_wrapper {
+	box-sizing: border-box;
+	opacity: 0;
+		/* 트랜지션 완료후 가로축이 -100퍼인
+	트랜지션의 상태를 정의 이러면 
+	화면 상에서 안보이다가 
+	.5초 후에 왼쪽에서 오른쪽으로 등장
+	*/
+	transform: translateX(-100%);
+	transition: all .5s ease-in;
+}
+
+
+.newsList_wrapper_enter {
+	opacity: 1;
+	/* 트랜지션 완료후 가로축이 0퍼인
+	트랜지션의 상태를 정의  */
+	transform: translateX(0%);
+}
