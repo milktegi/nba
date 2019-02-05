@@ -10,8 +10,8 @@ import Body from './body';
 class NewsArticles extends Component {
 
 	state = {
-		articles: [],
-		teams: []
+		article: [],
+		team: []
 	}
 
 	//WARNING! To be deprecated in React v17. Use componentDidMount instead.
