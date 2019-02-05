@@ -7,6 +7,7 @@ import Button from '../Buttons/buttons';
 import VideosTemplate from './videos-template';
 
 class VideosList extends Component {
+
   state = {
     teams: [],
     videos: [],
@@ -38,7 +39,7 @@ class VideosList extends Component {
     }
     axios
       .get(
-        `${URL}/videos?_start=${start}&_end=${end}	
+        `${URL}/videos?_start=${this.props.start}&_end=${this.props.end}	
 		`
       )
       .then((response) => {
