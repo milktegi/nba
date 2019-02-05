@@ -41,9 +41,11 @@ class VideosList extends Component {
     let template = null;
 
     switch (this.props.type) {
-      case 'card':
+      case ('card'):
         template = (
-          <VideosTemplate data={this.state.videos} teams={this.state.teams} />
+          <VideosTemplate 
+          data={this.state.videos} 
+          teams={this.state.teams} />
         );
         break;
       default:
@@ -58,15 +60,15 @@ class VideosList extends Component {
   };
 
   renderButton = () => {
-    return this.props.loadmore ? 
+    return this.props.loadmore ? (
       <Button
         type="loadmore"
         loadMore={() => this.loadMore()}
         cta="Load More Videos"
       />
-     : 
+    ) : (
       <Button type="linkTo" cta="More videos" linkTo="/videos" />
-    
+    );
   };
 
   renderTitle = () => {
