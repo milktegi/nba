@@ -7,7 +7,6 @@ import Button from '../Buttons/buttons';
 import VideosTemplate from './videos-template';
 
 class VideosList extends Component {
-
   state = {
     teams: [],
     videos: [],
@@ -16,51 +15,39 @@ class VideosList extends Component {
     amount: this.props.amount
   };
 
-  renderTitle = () => {
-    return this.props.title ? (
-      <h3>
-        <strong>NBA</strong> Videos
-      </h3>
-    ) : null;
-  };
-
-  //WARNING! To be deprecated in React v17. Use componentDidMount instead.
-  componentWillMount() {
-    this.request(this.props.start, this.props.end);
+  componentDidMount() {
+    this.request(this.state.start, this.state.end);
   }
 
   request = (start, end) => {
     if (this.state.teams.length < 1) {
-      axios.get(`${URL}/teams`).then((response) => {
+      axios.get(`${URL}/teams`).then(response => {
         this.setState({
           teams: response.data
         });
       });
     }
-    axios
-      .get(
-        `${URL}/videos?_start=${this.props.start}&_end=${this.props.end}	
-		`
-      )
-      .then((response) => {
-        this.setState({
-					videos: [ ...this.state.videos, ...response.data ],
-					start,
-					end
-        });
+
+    axios.get(`${URL}/videos?_start=${start}&_end=${end}`).then(response => {
+      this.setState({
+        videos: [...this.state.videos, ...response.data],
+        start,
+        end
       });
+    });
   };
 
   renderVideos = () => {
     let template = null;
+
     switch (this.props.type) {
-      case ('card'):
+      case 'card':
         template = (
           <VideosTemplate data={this.state.videos} teams={this.state.teams} />
         );
         break;
       default:
-        return null;
+        template = null;
     }
     return template;
   };
@@ -71,24 +58,29 @@ class VideosList extends Component {
   };
 
   renderButton = () => {
-    return this.props.loadmore ? (
+    return this.props.loadmore ? 
       <Button
-        type='loadmore'
+        type="loadmore"
         loadMore={() => this.loadMore()}
-        cta='더 많은 비디오 보기'
+        cta="Load More Videos"
       />
-    ) : (
-      <Button linkTo='/videos' cta='더 많은 비디오 보기' type='linkTo' />
-    );
+     : 
+      <Button type="linkTo" cta="More videos" linkTo="/videos" />
+    
+  };
+
+  renderTitle = () => {
+    return this.props.title ? (
+      <h3>
+        <strong>NBA</strong> Videos
+      </h3>
+    ) : null;
   };
 
   render() {
-    console.log(this.state.videos);
     return (
       <div className={styles.videoList_wrapper}>
         {this.renderTitle()}
-
-        {/**비디오 리스트 카드 렌더링 */}
         {this.renderVideos()}
         {this.renderButton()}
       </div>
