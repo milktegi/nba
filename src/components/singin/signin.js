@@ -46,13 +46,33 @@ class SignIn extends Component {
 	}
 
 	updateForm = element => {
+		// 기존 상태 카피 
+		const newFormdata = {
+			...this.state.formdata
+		}
+		// 유저 상태 카피 
+		const newElement = {
+			...newFormdata[element.id]
+		}
+		// 유저 상태의 value 속성에 
+		// 유저입력값을 저장 
+		newElement.value = element.event.target.value;
 
+		// 해당 유저에 
+		// 업데이트 엘리먼트를 대입
+	  newFormdata[element.id] = newElement;
+
+		// 상태 업데이트
+	  this.setState({
+			formdata: newFormdata
+		})
 	}
 
 	render() {
 		return(
 			<div className={styles.logContainer}>
 				<form>
+					<h2>회원가입 / 로그인 </h2>
 					<FormField
 						id={'email'}
 						formdata={this.state.formdata.email}

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './formfields.css';
 
 const formFields = ({ id, formdata, change }) => {
+  
   const renderTemplate = () => {
     let formTemplate = null;
 
