@@ -46,7 +46,20 @@ class SignIn extends Component {
 	}
 
 	updateForm = element => {
+		// console.log(element);
+		const newFormdata = {
+			...this.state.formdata
+		}
+		const newElement = {
+			...newFormdata[element.id]
+		}
+		newElement.value = element.event.target.value;
+		newFormdata[element.id] = newElement;
 
+		// console.log(newFormdata);
+		this.setState({
+			formdata: newFormdata
+		})
 	}
 
 	render() {
