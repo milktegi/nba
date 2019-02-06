@@ -8,6 +8,7 @@ import VideosArticle from './components/Articles/Videos/Video/index';
 import NewsMain from './components/Articles/News/Main/index';
 import VideosMain from 
 './components/Articles/Videos/Main/index'
+import SignIn from './components/singin/signin';
 
 class Routes extends Component {
   render() {
@@ -21,7 +22,8 @@ class Routes extends Component {
              <Route path="/videos/:id" 
           exact component={VideosArticle}/>
           <Route path="/videos"
-          exact component={VideosMain}/>
+          exact component={VideosMain}/>  
+          <Route path="/sign-in" exact component={SignIn}/>
         </Switch>
       </Layout>
     );
