@@ -3,6 +3,8 @@ import NewsSlider from '../widgets/NewsSlider/slider';
 import NewsList from '../widgets/NewsList/newsList';
 import VideosList from '../widgets/VideosList/videosList';
 
+import NewsList from '../widgets/NewsList/newsList';
+
 const Home = () => {
 	return (
 		<div>
@@ -14,6 +16,7 @@ const Home = () => {
 				dots: false
 			}}
 			/>
+
 		<NewsList
 			type="card"
       loadmore={true}

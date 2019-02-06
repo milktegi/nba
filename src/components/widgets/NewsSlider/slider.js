@@ -9,6 +9,7 @@ class NewsSlider extends Component {
   };
 
   componentWillMount() {
+
     firebaseArticles.limitToFirst(15)
     .once('value').then(snapshot => {
       const news = firebaseLooper(snapshot)
@@ -30,6 +31,7 @@ class NewsSlider extends Component {
   //       });
   //     });
   // }
+
   }
 
   render() {
