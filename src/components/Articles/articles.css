@@ -2,7 +2,7 @@
 	border: 1px solid #c5c5c5;
 	border-bottom: 0px;
 	background: #fff;
-	margin: 5px 5px 0 5px;
+	margin: 5px 3px 0 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,7 +28,7 @@
 	border: 1px solid #c5c5c5;
 	border-bottom: 0px;
 	background: #fff;
-	margin: 0px 5px 0 5px;
+	margin: 0px 2.5px 0 2.5px;
 	padding: 10px;
 	font-size: 13px;
 	font-weight: 300;
@@ -39,9 +39,9 @@
 }
 
 .articleBody {
-	background: #fff;
-	margin: 0 5px;
-	border: 1px solid #c5c5c5;
+	background: rgba(37, 35, 35, 0.897);
+	margin: 0 2px;
+	border: 1px solid rgba(37, 35, 35, 0.897);
 	padding: 0px;
 
 
@@ -49,8 +49,8 @@
 
 .articleBody h1{
 	font-size:25px;
-	font-weight: 400;
-	color: #4d4d4d;
+	font-weight: 500;
+	color: #f5f1f1;
 	margin: 15px 0;
 }
 
@@ -63,9 +63,9 @@
 }
 
 .articleText {
-	font-weight: 300;
-	color: #666666;
-	line-height: 23px;
+	font-weight: 500;
+	color: #c0c0c0;
+	line-height: 30px;
 	margin: 15px 0;
 }
 
