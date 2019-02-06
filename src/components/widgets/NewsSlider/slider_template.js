@@ -30,7 +30,10 @@ const SliderTemplates = (props) => {
                 }}
               />
               <Link to={`/articles/${item.id}`}>
-                <div className={styles.featured_caption}>{item.title}</div>
+      
+                <div className={styles.featured_caption}>
+                  {item.title}
+                </div>
               </Link>
             </div>
           </div>
