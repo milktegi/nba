@@ -1,6 +1,3 @@
-import React, { Component } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import { Link } from 'react-router-dom';
 import { firebaseTeams, firebaseArticles, firebaseLooper }
 from '../../../firebase';
 import styles from './newsList.css';
