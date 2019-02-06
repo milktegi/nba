@@ -17,7 +17,11 @@ const teamInfo = props => (
 			</div>
 			<div>
 				<strong>
-					승{props.team.stats[0].wins}- 패{props.team.stats[0].defeats}
+					승점: {props.team.stats[0].games}
+					승: {props.team.stats[0].wins} 
+					무: {props.team.stats[0].draw}
+					패: {props.team.stats[0].defeats}
+					득실차: {props.team.stats[0].goaldifference}
 				</strong>
 			</div>
 		</div>

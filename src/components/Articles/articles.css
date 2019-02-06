@@ -2,7 +2,7 @@
 	border: 1px solid #c5c5c5;
 	border-bottom: 0px;
 	background: #fff;
-	margin: 5px 5px 0 5px;
+	margin: 5px 3px 0 3px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -28,7 +28,7 @@
 	border: 1px solid #c5c5c5;
 	border-bottom: 0px;
 	background: #fff;
-	margin: 0px 5px 0 5px;
+	margin: 0px 2.5px 0 2.5px;
 	padding: 10px;
 	font-size: 13px;
 	font-weight: 300;
@@ -40,7 +40,7 @@
 
 .articleBody {
 	background: #fff;
-	margin: 0 5px;
+	margin: 0 2px;
 	border: 1px solid #c5c5c5;
 	padding: 0px;
 
