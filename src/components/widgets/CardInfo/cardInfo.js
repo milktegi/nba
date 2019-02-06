@@ -1,6 +1,7 @@
 import React from 'react';
 import FontAwesome from 'react-fontawesome';
 import styles from './cardInfo.css'
+import moment from 'moment';
 
 const CardInfo = (props) => {
 
@@ -10,11 +11,16 @@ const CardInfo = (props) => {
 		// 일치하는 데이터의 싱글 데이터를
 		// 반환하는 목적
 		let data = teams.find((item) => {
-			return item.id === team
+			return item.teamId === team
 		});
 		if(data){
 			return data.name;
 		}
+	}
+
+	const formatDate = date => {
+		moment.locale();
+		return moment(date).format(' YYYY-MM-DD')
 	}
 
 
@@ -25,7 +31,7 @@ const CardInfo = (props) => {
 			</span>
 			<span className={styles.date}>
 				<FontAwesome name="clock-o"/>
-				{props.date}
+				{formatDate(props.date)}
 			</span>
 		</div>
 	);

@@ -5,8 +5,7 @@ import VideosList from '../../../widgets/VideosList/videosList';
 
 const VideosMain = (props) => {
 	return ( 
-		<div>
-		
+		<div>	
 			<VideosList
 			type="card"
 			title={false}
