@@ -7,7 +7,16 @@ const formFields = ({ id, formdata, change }) => {
 
     switch (formdata.element) {
       case 'input':
-        formTemplate = <div>input</div>;
+        formTemplate = (
+          <div>
+            <input
+            {...formdata.config}
+            value={formdata.value}
+            onBlur={(event)=>change({event, id, blur: true})}
+            onChange={(event)=>change({event, id, blur: false})}
+            />
+          </div>
+        );
         break;
       default:
         formTemplate = null;
