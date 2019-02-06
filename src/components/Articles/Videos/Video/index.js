@@ -4,6 +4,8 @@ import { URL } from '../../../../config';
 import styles from '../../articles.css';
 import Header from './header';
 import VideosRelated from '../../../widgets/VideosList/VideosRelated/videosRelated';
+import { firebaseDB, 
+firebaseTeams, firebaseLooper, firebaseVideos } from '../../../../firebase';
 
 class VideoArticle extends Component {
   state = {
@@ -14,37 +16,70 @@ class VideoArticle extends Component {
   };
 
   componentWillMount() {
-    axios
-      .get(
-        `
-		${URL}/videos?id=${this.props.match.params.id}
-		`
-      )
-      .then(response => {
-        let article = response.data[0];
+    firebaseDB.ref(`videos/${this.props.match.params.id}`)
+    .once('value')
+    .then(snapshot=>{
+      let article = snapshot.val();
+      firebaseTeams.orderByChild('teamId')
+      .equalTo(article.team)
+      .once('value')
+      .then(snapshot=>{
+        const team = firebaseLooper(snapshot);
+        this.setState({
+          article,
+          team
+        })
+      })
+    })
+    // axios
+    //   .get(
+    //     `
+		// ${URL}/videos?id=${this.props.match.params.id}
+		// `
+    //   )
+    //   .then(response => {
+    //     let article = response.data[0];
 
-        axios.get(`${URL}/teams?id=${article.team}`).then(response => {
-          this.setState({
-            article,
-            team: response.data
-          });
-          this.getRelated();
-        });
-      });
+    //     axios.get(`${URL}/teams?id=${article.team}`).then(response => {
+    //       this.setState({
+    //         article,
+    //         team: response.data
+    //       });
+    //       this.getRelated();
+    //     });
+    //   });
   }
 
   getRelated = () => {
-    axios.get(`${URL}/teams`).then(response => {
-      let teams = response.data;
-      axios
-        .get(`${URL}/videos?q=${this.state.team[0].city}&_limit=3`)
-        .then(res => {
-          this.setState({
-            teams,
-            related: res.data
-          });
-        });
-    });
+
+    firebaseTeams.once('value')
+    .then(snapshot=>{
+      const teams = firebaseLooper(snapshot);
+      firebaseVideos
+      .orderByChild('team')
+      .equalTo(this.state.article.team)
+      .limitToFirst(3).once('value')
+      .then(snapshot=>{
+        const related = firebaseLooper(snapshot);
+        this.setState({
+          teams,
+          related
+        })
+      })
+
+    })
+
+    // axios.get(`${URL}/teams`).then(response => {
+    //   let teams = response.data;
+    //   axios
+    //     .get(`${URL}/videos?q=${this.state.team[0].city}&_limit=3`)
+    //     .then(res => {
+    //       this.setState({
+    //         teams,
+    //         related: res.data
+    //       });
+    //     });
+    // });
   };
 
   render() {
